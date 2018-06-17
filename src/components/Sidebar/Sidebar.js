@@ -42,8 +42,8 @@ Sidebar.propTypes = {
   handleRadioChange: PropTypes.func,
   handleSave: PropTypes.func,
   handleCancel: PropTypes.func,
-  selectedPower: PropTypes.string,
-  selectedRadio: PropTypes.string
+  selectedPower: PropTypes.any,
+  selectedRadio: PropTypes.any
 };
 
 export default Sidebar;

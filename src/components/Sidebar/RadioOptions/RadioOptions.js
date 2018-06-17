@@ -45,7 +45,7 @@ RadioOptions.propTypes = {
   children: PropTypes.node,
   radioOptions: PropTypes.arrayOf(PropTypes.object),
   handleRadioChange: PropTypes.func,
-  selectedRadio: PropTypes.string
+  selectedRadio: PropTypes.any
 };
 
 export default RadioOptions;

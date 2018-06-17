@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { capitalize } from 'utils/functions';
 
 import '../Sidebar.css';
 import './TxPower.css';
@@ -7,7 +8,7 @@ import './TxPower.css';
 const TxPower = props => {
   const powerList = props.txPower.map(powerOption => (
     <option key={`${powerOption.power}_power`} value={powerOption.power}>
-      {powerOption.power}
+      {capitalize(powerOption.type)} ({powerOption.power})
     </option>
   ));
 
@@ -23,7 +24,7 @@ TxPower.propTypes = {
   children: PropTypes.node,
   txPower: PropTypes.arrayOf(PropTypes.object),
   handlePowerChange: PropTypes.func,
-  selectedPower: PropTypes.string
+  selectedPower: PropTypes.any
 };
 
 export default TxPower;
