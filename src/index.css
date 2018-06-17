@@ -14,7 +14,9 @@ p,
 a,
 span,
 ul,
-li {
+li,
+label,
+option {
   font-family: 'Lato', sans-serif;
   margin: 0;
   padding: 0;
