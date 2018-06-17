@@ -1,0 +1,22 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "plugins": ["prettier", "react"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "semi": true
+      }
+    ],
+    "no-console": "off"
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier", "prettier/react"]
+}
