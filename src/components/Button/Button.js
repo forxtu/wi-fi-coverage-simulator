@@ -1,11 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import './Button.css';
+import Aux from 'hoc/Aux';
 
 const Button = props => {
   return (
-    <div>
-      <h1> Button </h1>
-    </div>
+    <Aux>
+      <button
+        className={`Button ${props.btnType}`}
+        // style={props.btnStyle}
+        onClick={props.btnType === 'Button__save' ? props.handleSave : props.handleCancel}
+      >
+        {props.children}
+      </button>
+    </Aux>
   );
+};
+
+Button.propTypes = {
+  children: PropTypes.node,
+  btnType: PropTypes.string,
+  handleSave: PropTypes.func,
+  handleCancel: PropTypes.func
 };
 
 export default Button;

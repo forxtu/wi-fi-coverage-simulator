@@ -1,0 +1,19 @@
+.Button {
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 15px; }
+  .Button:not(:last-child) {
+    margin-right: 5px; }
+  .Button:hover {
+    cursor: pointer; }
+  .Button:active, .Button:focus, .Button:visited {
+    outline: none;
+    box-shadow: none; }
+  .Button__save {
+    background-color: #00a1da;
+    color: #fff; }
+  .Button__cancel {
+    background-color: transparent;
+    color: #00a1da; }
