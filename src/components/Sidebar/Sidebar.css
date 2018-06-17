@@ -1,5 +1,16 @@
 .Sidebar {
-  width: 250px;
+  width: 220px;
   height: 100vh;
   background-color: #101519;
-  float: right; }
+  float: right;
+  padding: 15px 10px; }
+  .Sidebar__title {
+    color: #8e9ba3;
+    font-size: 14px;
+    margin-bottom: 15px; }
+  .Sidebar__controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    border-top: 1px solid #fff;
+    padding: 15px 0; }
