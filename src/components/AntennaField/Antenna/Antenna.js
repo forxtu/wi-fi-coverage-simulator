@@ -5,17 +5,18 @@ import './Antenna.css';
 
 const Antenna = props => {
   const AntennaArea = {
-    border: '50px solid #d2d8e0'
+    border: `${props.calculatedDistance}px solid #d2d8e0`
   };
   return (
     <div className="Antenna">
-      <div className="Antenna__item" style={AntennaArea}></div>
+      <div className="Antenna__item" style={AntennaArea} />
     </div>
   );
 };
 
 Antenna.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  calculatedDistance: PropTypes.any
 };
 
 export default Antenna;

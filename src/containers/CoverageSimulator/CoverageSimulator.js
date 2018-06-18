@@ -9,7 +9,8 @@ class CoverageSimulator extends Component {
     super();
     this.state = {
       selectedPower: 4,
-      selectedRadio: 2.4,
+      selectedRadio: 2400,
+      calculatedDistance: 177,
       txPower: [
         {
           type: 'high',
@@ -19,92 +20,86 @@ class CoverageSimulator extends Component {
         {
           type: 'medium',
           power: '-6dBm',
-          numericPower: 6
+          numericPower: -6
         },
         {
           type: 'low',
           power: '-16dBm',
-          numericPower: 16
+          numericPower: -16
         }
-        // '4dBm', '6dBm', '16dBm'
       ],
       radioOptions: [
         {
           type: 'low',
-          power: '2.4GHz',
-          numericPower: 2.4
+          freq: '2.4GHz',
+          numericFreq: 2400
         },
         {
           type: 'high',
-          power: '5GHz',
-          numericPower: 5
+          freq: '5GHz',
+          numericFreq: 5000
         }
-        // '2.4GHz', '5GHz'
       ]
     };
+    this.baseState = this.state;
 
-    // this.handlePowerChange = this.handlePowerChange.bind(this);
-    // this.handleRadioChange = this.handleRadioChange.bind(this);
+    this.handlePowerChange = this.handlePowerChange.bind(this);
+    this.handleRadioChange = this.handleRadioChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
   }
 
   handlePowerChange(e) {
-    this.setState({
-      selectedPower: e.target.value
-    });
-    // console.log(this.state.selectedPower);
+    const newSelectedPower = e.target.value;
+    this.setState(() => ({
+      selectedPower: newSelectedPower
+    }));
   }
   handleRadioChange(e) {
-    this.setState({
-      selectedRadio: e.target.value
-    });
+    const newSelectedRadio = e.target.value;
+    this.setState(() => ({
+      selectedRadio: newSelectedRadio
+    }));
+    console.log(e.target.value);
     console.log(this.state.selectedRadio);
   }
   handleSave() {
-    console.log(`${this.state.selectedPower} Power | ${this.state.selectedRadio} Radio`);
+    this.calculateDistance(this.state.selectedPower, this.state.selectedRadio);
   }
   handleCancel() {
-    this.setState(prevState => ({
-      selectedPower: '4dBm',
-      selectedRadio: '2.4Ghz'
-      // selectedPower: prevState.selectedPower,
-      // selectedRadio: prevState.selectedRadio
-    }));
-    console.log('cancel');
-    console.log(`${this.state.selectedPower} Power | ${this.state.selectedRadio} Radio`);
+    this.setState(this.baseState);
   }
 
-  // calculateDistance() {
-  //   let K = 27.55;
-  //   let f = this.state.selectedRadio * 1000;
-  //   let FSPL = this.state.selectedPower;
-  //   // let log10f = 67.6;
-  //   let log10f = 20 * Math.log10(2400);
-  //   let d = 10 * (FSPL- K - log10f) / 20;
-  //   console.log(log10f);
-  // }
-
-  calculateDistance(signalLevelInDb, freqInMHz) {
-    let exp = (27.55 - (20 * Math.log10(freqInMHz)) + Math.abs(signalLevelInDb)) / 20;
-    console.log(Math.pow(10, exp));
-    return Math.pow(10, exp);
+  calculateDistance(txPowerValue, freqInMHz) {
+    let receiverSensitivity = -80;
+    let receiveAntennaGain = 1;
+    let FSPL = txPowerValue - receiverSensitivity + receiveAntennaGain;
+    let distance = (27.55 - 20 * Math.log10(freqInMHz) + Math.abs(FSPL)) / 20;
+    // console.log(Math.pow(10, distance).toFixed());
+    this.setState(() => ({
+      calculatedDistance: Math.pow(10, distance).toFixed()
+    }));
+    // return Math.pow(10, distance).toFixed();
   }
 
   UNSAFE_componentWillMount() {
-    this.calculateDistance(80, 2400);
+    this.calculateDistance(this.state.selectedPower, this.state.selectedRadio);
   }
 
   render() {
     const state = this.state;
     return (
       <div className="CoverageSimulator">
-        <AntennaField />
+        <AntennaField
+          selectedPower={state.selectedPower}
+          selectedRadio={state.selectedRadio}
+          calculatedDistance={state.calculatedDistance}
+        />
         <Sidebar
           txPower={state.txPower}
           radioOptions={state.radioOptions}
-          handlePowerChange={this.handlePowerChange.bind(this)}
-          handleRadioChange={this.handleRadioChange.bind(this)}
+          handlePowerChange={this.handlePowerChange}
+          handleRadioChange={this.handleRadioChange}
           handleSave={this.handleSave}
           handleCancel={this.handleCancel}
           selectedPower={state.selectedPower}

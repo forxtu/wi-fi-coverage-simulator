@@ -7,7 +7,7 @@ import './TxPower.css';
 
 const TxPower = props => {
   const powerList = props.txPower.map(powerOption => (
-    <option key={`${powerOption.power}_power`} value={powerOption.power}>
+    <option key={`${powerOption.power}_power`} value={powerOption.numericPower}>
       {capitalize(powerOption.type)} ({powerOption.power})
     </option>
   ));
@@ -15,7 +15,9 @@ const TxPower = props => {
   return (
     <div className="TxPower">
       <h2 className="Sidebar__title">{props.children}</h2>
-      <select onChange={props.handlePowerChange} value={props.selectedPower}>{powerList}</select>
+      <select onChange={props.handlePowerChange} value={props.selectedPower}>
+        {powerList}
+      </select>
     </div>
   );
 };

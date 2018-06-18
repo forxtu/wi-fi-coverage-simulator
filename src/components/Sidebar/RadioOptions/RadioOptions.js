@@ -1,32 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import AuxWrapper from 'hoc/AuxWrapper';
-
 import '../Sidebar.css';
 import './RadioOptions.css';
 
 const RadioOptions = props => {
   const radioOptionsList = props.radioOptions.map(radioOption => (
-    <li
-      key={`${radioOption.power}_radio`}
-      className="RadioOptions__items-group"
-      onChange={props.handleRadioChange}
-    >
+    <li key={`${radioOption.freq}_radio`} className="RadioOptions__items-group">
       <input
         className="RadioOptions__items-input"
         name="radioOption"
         type="radio"
-        value={radioOption.power}
-        id={`${radioOption.power}_radio_id`}
-        // checked={radioOption.power === props.selectedRadio}
-        defaultChecked={radioOption.power === props.selectedRadio}
+        value={radioOption.numericFreq}
+        id={`${radioOption.freq}_radio_id`}
+        checked={radioOption.numericFreq == props.selectedRadio}
+        onChange={props.handleRadioChange}
       />
       <label
         className="RadioOptions__items-label"
-        htmlFor={`${radioOption.power}_radio_id`}
+        htmlFor={`${radioOption.freq}_radio_id`}
       >
-        {radioOption.power}
+        {radioOption.freq}
       </label>
 
       <div className="RadioOptions__items-check" />
