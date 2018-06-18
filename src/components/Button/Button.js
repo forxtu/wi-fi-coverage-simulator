@@ -9,7 +9,6 @@ const Button = props => {
     <AuxWrapper>
       <button
         className={`Button ${props.btnType}`}
-        // style={props.btnStyle}
         onClick={
           props.btnType === 'Button__save'
             ? props.handleSave
