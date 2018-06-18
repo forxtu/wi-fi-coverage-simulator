@@ -39,7 +39,8 @@ class CoverageSimulator extends Component {
           freq: '5GHz',
           numericFreq: 5000
         }
-      ]
+      ],
+      clients: [...Array(10).keys()]
     };
     this.baseState = this.state;
 
@@ -94,6 +95,7 @@ class CoverageSimulator extends Component {
           selectedPower={state.selectedPower}
           selectedRadio={state.selectedRadio}
           calculatedDistance={state.calculatedDistance}
+          clients={state.clients}
         />
         <Sidebar
           txPower={state.txPower}
