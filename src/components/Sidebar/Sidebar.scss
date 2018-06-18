@@ -1,6 +1,6 @@
 .Sidebar {
   width: 220px;
-  height: 100vh;
+  height: calc(100vh - 30px);;
   background-color: #101519;
   float: right;
   padding: 15px 10px;
