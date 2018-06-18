@@ -2,19 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './Button.css';
-import Aux from 'hoc/Aux';
+import AuxWrapper from 'hoc/AuxWrapper';
 
 const Button = props => {
   return (
-    <Aux>
+    <AuxWrapper>
       <button
         className={`Button ${props.btnType}`}
         // style={props.btnStyle}
-        onClick={props.btnType === 'Button__save' ? props.handleSave : props.handleCancel}
+        onClick={
+          props.btnType === 'Button__save'
+            ? props.handleSave
+            : props.handleCancel
+        }
       >
         {props.children}
       </button>
-    </Aux>
+    </AuxWrapper>
   );
 };
 

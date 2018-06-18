@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Aux from 'hoc/Aux';
+import AuxWrapper from 'hoc/AuxWrapper';
 import './Layout.css';
 
 const Layout = props => (
-  <Aux>
+  <AuxWrapper>
     {/* <div className="Layout">
       <h1>layout</h1>
     </div> */}
     {props.children}
-  </Aux>
+  </AuxWrapper>
 );
 
 Layout.propTypes = {

@@ -1,3 +1,3 @@
-const Aux = props => props.children;
+const AuxWrapper = props => props.children;
 
-export default Aux;
+export default AuxWrapper;

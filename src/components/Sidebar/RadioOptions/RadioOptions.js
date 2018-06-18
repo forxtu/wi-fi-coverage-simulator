@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Aux from 'hoc/Aux';
+import AuxWrapper from 'hoc/AuxWrapper';
 
 import '../Sidebar.css';
 import './RadioOptions.css';
