@@ -61,11 +61,12 @@ class Antenna extends Component {
     );
 
     if (distance - 44 < this.props.calculatedDistance) {
-      console.log('LESSSSS');
-      this.props.toggleClientAccess();
+      this.props.activateClientAccess();
+    } else {
+      this.props.disableClientAccess();
     }
     // console.log(this.props.calculatedDistance);
-    console.log(distance);
+    // console.log(distance);
 
     return distance;
   }

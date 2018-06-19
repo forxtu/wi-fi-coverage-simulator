@@ -8,10 +8,11 @@ import './AntennaField.css';
 const AntennaField = props => {
   return (
     <div className="AntennaField">
-      <Clients clients={props.clients} isClientActive={props.isClientActive} />
+      <Clients clients={props.clients} isClientActive={props.isClientActive} isClientActiveStyle={props.isClientActiveStyle}/>
       <Antenna
         calculatedDistance={props.calculatedDistance}
-        toggleClientAccess={props.toggleClientAccess}
+        activateClientAccess={props.activateClientAccess}
+        disableClientAccess={props.disableClientAccess}
       />
     </div>
   );

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Sidebar from 'components/Sidebar/Sidebar';
 import AntennaField from 'components/AntennaField/AntennaField';
 import './CoverageSimulator.css';
+import * as actionTypes from 'store/actions';
 
 class CoverageSimulator extends Component {
   constructor() {
@@ -41,7 +43,7 @@ class CoverageSimulator extends Component {
         }
       ],
       clients: [...Array(1).keys()],
-      isClientActive: false
+      // isClientActive: false
     };
     this.baseState = this.state;
 
@@ -87,7 +89,7 @@ class CoverageSimulator extends Component {
 
   toggleClientAccessHandler() {
     this.setState(prevState => ({
-      isClientActive: true
+      isClientActive: !prevState.isClientActive
     }));
   }
 
@@ -99,13 +101,19 @@ class CoverageSimulator extends Component {
     const state = this.state;
     return (
       <div className="CoverageSimulator">
+        {/* {state.isClientActive} */}
+        {this.props.clientStatus}
         <AntennaField
           selectedPower={state.selectedPower}
           selectedRadio={state.selectedRadio}
           calculatedDistance={state.calculatedDistance}
           clients={state.clients}
-          isClientActive={state.isClientActive}
-          toggleClientAccess={this.toggleClientAccessHandler}
+          isClientActive={this.props.clientStatus}
+          isClientActiveStyle={this.props.clientStyle}
+          // isClientActive={state.isClientActive}
+          // toggleClientAccess={this.toggleClientAccessHandler}
+          activateClientAccess={this.props.onStatusActivate}
+          disableClientAccess={this.props.onStatusDisable}
         />
         <Sidebar
           txPower={state.txPower}
@@ -122,4 +130,18 @@ class CoverageSimulator extends Component {
   }
 }
 
-export default CoverageSimulator;
+const mapStateToProps = state => {
+  return {
+    clientStatus: state.isClientActive,
+    clientStyle: state.isClientActiveStyle
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onStatusActivate: () => dispatch({type: actionTypes.ACTIVATE_CLIENT_STATUS}),
+    onStatusDisable: () => dispatch({type: actionTypes.DISABLE_CLIENT_STATUS})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoverageSimulator);

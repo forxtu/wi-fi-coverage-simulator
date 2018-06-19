@@ -19,7 +19,7 @@ class Clients extends Component {
       const clientStyle = {
         left: `${posX}px`,
         top: `${posY}px`,
-        backgroundColor: this.props.isClientActive ? '#24B77D' : '#FC3516'
+        backgroundColor: this.props.isClientActiveStyle
       };
 
       return <div key={item} style={clientStyle} className="Clients__item" />;
