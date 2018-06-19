@@ -8,8 +8,11 @@ import './AntennaField.css';
 const AntennaField = props => {
   return (
     <div className="AntennaField">
-      <Clients clients={props.clients} />
-      <Antenna calculatedDistance={props.calculatedDistance} />
+      <Clients clients={props.clients} isClientActive={props.isClientActive} />
+      <Antenna
+        calculatedDistance={props.calculatedDistance}
+        toggleClientAccess={props.toggleClientAccess}
+      />
     </div>
   );
 };
@@ -19,7 +22,9 @@ AntennaField.propTypes = {
   selectedPower: PropTypes.any,
   selectedRadio: PropTypes.any,
   calculatedDistance: PropTypes.any,
-  clients: PropTypes.any
+  clients: PropTypes.any,
+  isClientActive: PropTypes.bool,
+  toggleClientAccess: PropTypes.func
 };
 
 export default AntennaField;
