@@ -40,7 +40,8 @@ class CoverageSimulator extends Component {
           numericFreq: 5000
         }
       ],
-      clients: [...Array(10).keys()]
+      clients: [...Array(1).keys()],
+      isClientActive: false
     };
     this.baseState = this.state;
 
@@ -48,6 +49,7 @@ class CoverageSimulator extends Component {
     this.handleRadioChange = this.handleRadioChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+    this.toggleClientAccessHandler = this.toggleClientAccessHandler.bind(this);
   }
 
   handlePowerChange(e) {
@@ -83,6 +85,12 @@ class CoverageSimulator extends Component {
     // return Math.pow(10, distance).toFixed();
   }
 
+  toggleClientAccessHandler() {
+    this.setState(prevState => ({
+      isClientActive: true
+    }));
+  }
+
   UNSAFE_componentWillMount() {
     this.calculateDistance(this.state.selectedPower, this.state.selectedRadio);
   }
@@ -96,6 +104,8 @@ class CoverageSimulator extends Component {
           selectedRadio={state.selectedRadio}
           calculatedDistance={state.calculatedDistance}
           clients={state.clients}
+          isClientActive={state.isClientActive}
+          toggleClientAccess={this.toggleClientAccessHandler}
         />
         <Sidebar
           txPower={state.txPower}
