@@ -1,8 +1,7 @@
 import * as actionTypes from './actions';
 
 const initialState = {
-  isClientActive: false,
-  isClientActiveStyle: '#24B77D'
+  isClientActive: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,14 +9,12 @@ const reducer = (state = initialState, action) => {
     case actionTypes.ACTIVATE_CLIENT_STATUS:
       return {
         ...state,
-        isClientActive: true,
-        isClientActiveStyle: '#24B77D'
+        isClientActive: true
       };
     case actionTypes.DISABLE_CLIENT_STATUS:
       return {
         ...state,
-        isClientActive: false,
-        isClientActiveStyle: '#FC3516'
+        isClientActive: false
       };
     default:
       return state;
