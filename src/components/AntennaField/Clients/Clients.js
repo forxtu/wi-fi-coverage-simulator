@@ -50,12 +50,7 @@ class Clients extends Component {
     }
   }
   render() {
-    return (
-      <div className="Clients">
-        {this.clients}
-        <div>{this.clientStyle.backgroundColor}</div>
-      </div>
-    );
+    return <div className="Clients">{this.clients}</div>;
   }
 }
 
