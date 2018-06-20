@@ -1,5 +1,6 @@
 .Antenna {
-  display: inline-flex; }
+  display: inline-flex;
+  position: absolute; }
   .Antenna__item {
     display: flex;
     justify-content: center;

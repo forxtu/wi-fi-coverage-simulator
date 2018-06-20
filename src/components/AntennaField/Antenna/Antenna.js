@@ -55,24 +55,31 @@ class Antenna extends Component {
       );
     };
 
-    var distance = getDistanceBetweenElements(
-      document.querySelector('.Antenna'),
-      document.querySelector('.Clients__item')
-    );
+    let clientsItems = document.querySelectorAll('.Clients__item');
+    clientsItems = Array.prototype.slice.call(clientsItems);
+    // console.log(clientsItems);
+    clientsItems.map(client => {
+      // console.log(item);
+      // return item;
+      var distance = getDistanceBetweenElements(
+        document.querySelector('.Antenna'),
+        client
+      );
 
-    if (distance - 44 < this.props.calculatedDistance) {
-      this.props.activateClientAccess();
-    } else {
-      this.props.disableClientAccess();
-    }
+      if (distance - 44 < this.props.calculatedDistance) {
+        this.props.activateClientAccess();
+      } else {
+        this.props.disableClientAccess();
+      }
+      return distance;
+    });
+
     // console.log(this.props.calculatedDistance);
     // console.log(distance);
-
-    return distance;
   }
 
   componentDidMount() {
-    this.distanceBetweenClientsAndAccesPoint();
+    // this.distanceBetweenClientsAndAccesPoint();
   }
 
   render() {

@@ -42,7 +42,8 @@ class CoverageSimulator extends Component {
           numericFreq: 5000
         }
       ],
-      clients: [...Array(1).keys()],
+      clients: [...Array(10).keys()]
+      // clients: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
       // isClientActive: false
     };
     this.baseState = this.state;
@@ -93,9 +94,12 @@ class CoverageSimulator extends Component {
     }));
   }
 
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.calculateDistance(this.state.selectedPower, this.state.selectedRadio);
   }
+  // UNSAFE_componentWillMount() {
+  //   this.calculateDistance(this.state.selectedPower, this.state.selectedRadio);
+  // }
 
   render() {
     const state = this.state;
@@ -109,7 +113,6 @@ class CoverageSimulator extends Component {
           calculatedDistance={state.calculatedDistance}
           clients={state.clients}
           isClientActive={this.props.clientStatus}
-          isClientActiveStyle={this.props.clientStyle}
           // isClientActive={state.isClientActive}
           // toggleClientAccess={this.toggleClientAccessHandler}
           activateClientAccess={this.props.onStatusActivate}
@@ -132,16 +135,19 @@ class CoverageSimulator extends Component {
 
 const mapStateToProps = state => {
   return {
-    clientStatus: state.isClientActive,
-    clientStyle: state.isClientActiveStyle
-  }
-}
+    clientStatus: state.isClientActive
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
-    onStatusActivate: () => dispatch({type: actionTypes.ACTIVATE_CLIENT_STATUS}),
-    onStatusDisable: () => dispatch({type: actionTypes.DISABLE_CLIENT_STATUS})
-  }
-}
+    onStatusActivate: () =>
+      dispatch({ type: actionTypes.ACTIVATE_CLIENT_STATUS }),
+    onStatusDisable: () => dispatch({ type: actionTypes.DISABLE_CLIENT_STATUS })
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(CoverageSimulator);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CoverageSimulator);
