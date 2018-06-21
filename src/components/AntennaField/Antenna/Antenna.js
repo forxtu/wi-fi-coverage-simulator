@@ -66,11 +66,17 @@ class Antenna extends Component {
         client
       );
 
-      if (distance - 44 < this.props.calculatedDistance) {
-        this.props.activateClientAccess();
-      } else {
-        this.props.disableClientAccess();
-      }
+      distance - 44 < this.props.calculatedDistance ? client.style.backgroundColor = '#24B77D' : client.style.backgroundColor = '#FC3516';
+
+      // if (distance - 44 < this.props.calculatedDistance) {
+      //   // this.props.activateClientAccess();
+      //   // client.style.backgroundColor = this.props.isClientActive;
+      //   client.style.backgroundColor = '#24B77D';
+      // } else {
+      //   // this.props.disableClientAccess();
+      //   // client.style.backgroundColor = this.props.isClientActive;
+      //   client.style.backgroundColor = '#FC3516';
+      // }
       return distance;
     });
 
@@ -99,8 +105,6 @@ class Antenna extends Component {
           >
             <div className="Antenna__item-point" />
           </div>
-          {/* x: {this.state.deltaPosition.x.toFixed(0)}, y:{' '}
-          {this.state.deltaPosition.y.toFixed(0)} */}
         </div>
       </Draggable>
     );

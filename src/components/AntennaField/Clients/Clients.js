@@ -5,19 +5,8 @@ import Client from './Client/Client';
 import './Clients.css';
 
 class Clients extends Component {
-  constructor(props) {
-    super(props);
-
-    this.generateClients = this.generateClients.bind(this);
-  }
-  // generateClientStyle() {
-  //   let clientStyle = {
-  //     backgroundColor: !this.props.isClientActive ? '#24B77D' : '#FC3516'
-  //   };
-  //   console.log(clientStyle.backgroundColor);
-  // }
-  generateClients() {
-    this.clients = this.props.clients.map(item => {
+  render() {
+    const clients = this.props.clients.map(item => {
       let divSize = 10;
       let posX = (
         Math.random() *
@@ -30,34 +19,18 @@ class Clients extends Component {
       let clientStyle = {
         left: `${posX}px`,
         top: `${posY}px`,
-        backgroundColor: !this.props.isClientActive ? '#24B77D' : '#FC3516'
+        backgroundColor: '#FC3516'
       };
 
-      // return <div key={item} style={clientStyle} className="Clients__item" />;
       return <Client key={item} clientStyle={clientStyle} />;
     });
-  }
-  componentDidMount() {
-    this.generateClients();
-    // this.generateClientStyle();
-  }
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    if (prevProps.isClientActive !== this.props.isClientActive) {
-      // this.setState({loading: true}, this.updateData);
-      this.generateClients();
-      // this.generateClientStyle();
-      console.log('props changed');
-    }
-  }
-  render() {
-    return <div className="Clients">{this.clients}</div>;
+    return <div className="Clients">{clients}</div>;
   }
 }
 
 Clients.propTypes = {
   children: PropTypes.node,
-  clients: PropTypes.node,
-  isClientActive: PropTypes.bool
+  clients: PropTypes.node
 };
 
 export default Clients;

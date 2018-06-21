@@ -105,8 +105,6 @@ class CoverageSimulator extends Component {
     const state = this.state;
     return (
       <div className="CoverageSimulator">
-        {/* {state.isClientActive} */}
-        {this.props.clientStatus}
         <AntennaField
           selectedPower={state.selectedPower}
           selectedRadio={state.selectedRadio}

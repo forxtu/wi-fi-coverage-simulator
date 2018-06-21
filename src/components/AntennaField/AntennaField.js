@@ -13,6 +13,7 @@ const AntennaField = props => {
         calculatedDistance={props.calculatedDistance}
         activateClientAccess={props.activateClientAccess}
         disableClientAccess={props.disableClientAccess}
+        isClientActive={props.isClientActive}
       />
     </div>
   );
@@ -24,7 +25,7 @@ AntennaField.propTypes = {
   selectedRadio: PropTypes.any,
   calculatedDistance: PropTypes.any,
   clients: PropTypes.any,
-  isClientActive: PropTypes.bool,
+  isClientActive: PropTypes.any,
   toggleClientAccess: PropTypes.func
 };
 
