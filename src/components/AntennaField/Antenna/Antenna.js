@@ -85,7 +85,9 @@ class Antenna extends Component {
   }
 
   componentDidMount() {
-    // this.distanceBetweenClientsAndAccesPoint();
+    setTimeout(() => {
+      this.distanceBetweenClientsAndAccesPoint();
+    }, 0);
   }
 
   render() {

@@ -5,8 +5,8 @@ import Client from './Client/Client';
 import './Clients.css';
 
 class Clients extends Component {
-  render() {
-    const clients = this.props.clients.map(item => {
+  componentDidMount() {
+    this.clients = this.props.clients.map(item => {
       let divSize = 10;
       let posX = (
         Math.random() *
@@ -21,10 +21,11 @@ class Clients extends Component {
         top: `${posY}px`,
         backgroundColor: '#FC3516'
       };
-
       return <Client key={item} clientStyle={clientStyle} />;
     });
-    return <div className="Clients">{clients}</div>;
+  }
+  render() {
+    return <div className="Clients">{this.clients}</div>;
   }
 }
 
