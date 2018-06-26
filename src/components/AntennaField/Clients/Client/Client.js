@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { object } from 'prop-types';
 
 import './Client.css';
 
@@ -8,9 +8,7 @@ const Client = props => {
 };
 
 Client.propTypes = {
-  children: PropTypes.node,
-  clients: PropTypes.node,
-  isClientActive: PropTypes.bool
+  clientStyle: object
 };
 
 export default Client;

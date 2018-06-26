@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { string, func } from 'prop-types';
 
 import Sidebar from 'components/Sidebar/Sidebar';
 import AntennaField from 'components/AntennaField/AntennaField';
@@ -7,6 +8,12 @@ import './CoverageSimulator.css';
 import * as actionTypes from 'store/actions';
 
 class CoverageSimulator extends Component {
+  static propTypes = {
+    clientStatus: string,
+    onStatusActivate: func,
+    onStatusDisable: func
+  };
+
   constructor() {
     super();
     this.state = {
@@ -43,8 +50,6 @@ class CoverageSimulator extends Component {
         }
       ],
       clients: [...Array(10).keys()]
-      // clients: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-      // isClientActive: false
     };
     this.baseState = this.state;
 
@@ -52,7 +57,6 @@ class CoverageSimulator extends Component {
     this.handleRadioChange = this.handleRadioChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
-    this.toggleClientAccessHandler = this.toggleClientAccessHandler.bind(this);
   }
 
   handlePowerChange(e) {
@@ -66,8 +70,6 @@ class CoverageSimulator extends Component {
     this.setState(() => ({
       selectedRadio: newSelectedRadio
     }));
-    console.log(e.target.value);
-    console.log(this.state.selectedRadio);
   }
   handleSave() {
     this.calculateDistance(this.state.selectedPower, this.state.selectedRadio);
@@ -76,33 +78,24 @@ class CoverageSimulator extends Component {
     this.setState(this.baseState);
   }
 
-  calculateDistance(txPowerValue, freqInMHz) {
+  calculateDistance(selectedPower, selectedRadioFreq) {
     let receiverSensitivity = -80;
     let receiveAntennaGain = 1;
-    let FSPL = txPowerValue - receiverSensitivity + receiveAntennaGain;
-    let distance = (27.55 - 20 * Math.log10(freqInMHz) + Math.abs(FSPL)) / 20;
-    // console.log(Math.pow(10, distance).toFixed());
+    let FSPL = selectedPower - receiverSensitivity + receiveAntennaGain;
+    let distance =
+      (27.55 - 20 * Math.log10(selectedRadioFreq) + Math.abs(FSPL)) / 20;
     this.setState(() => ({
       calculatedDistance: Math.pow(10, distance).toFixed()
-    }));
-    // return Math.pow(10, distance).toFixed();
-  }
-
-  toggleClientAccessHandler() {
-    this.setState(prevState => ({
-      isClientActive: !prevState.isClientActive
     }));
   }
 
   componentDidMount() {
     this.calculateDistance(this.state.selectedPower, this.state.selectedRadio);
   }
-  // UNSAFE_componentWillMount() {
-  //   this.calculateDistance(this.state.selectedPower, this.state.selectedRadio);
-  // }
 
   render() {
     const state = this.state;
+    const props = this.props;
     return (
       <div className="CoverageSimulator">
         <AntennaField
@@ -110,19 +103,17 @@ class CoverageSimulator extends Component {
           selectedRadio={state.selectedRadio}
           calculatedDistance={state.calculatedDistance}
           clients={state.clients}
-          isClientActive={this.props.clientStatus}
-          // isClientActive={state.isClientActive}
-          // toggleClientAccess={this.toggleClientAccessHandler}
-          activateClientAccess={this.props.onStatusActivate}
-          disableClientAccess={this.props.onStatusDisable}
+          isClientActive={props.clientStatus}
+          activateClientAccess={props.onStatusActivate}
+          disableClientAccess={props.onStatusDisable}
         />
         <Sidebar
           txPower={state.txPower}
           radioOptions={state.radioOptions}
-          handlePowerChange={this.handlePowerChange}
-          handleRadioChange={this.handleRadioChange}
-          handleSave={this.handleSave}
-          handleCancel={this.handleCancel}
+          onPowerChange={this.handlePowerChange}
+          onRadioChange={this.handleRadioChange}
+          onSave={this.handleSave}
+          onCancel={this.handleCancel}
           selectedPower={state.selectedPower}
           selectedRadio={state.selectedRadio}
         />

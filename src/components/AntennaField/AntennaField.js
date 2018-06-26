@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { node, array, func, string, any } from 'prop-types';
 
 import Antenna from './Antenna/Antenna';
 import Clients from './Clients/Clients';
@@ -20,13 +20,14 @@ const AntennaField = props => {
 };
 
 AntennaField.propTypes = {
-  children: PropTypes.node,
-  selectedPower: PropTypes.any,
-  selectedRadio: PropTypes.any,
-  calculatedDistance: PropTypes.any,
-  clients: PropTypes.any,
-  isClientActive: PropTypes.any,
-  toggleClientAccess: PropTypes.func
+  children: node,
+  selectedPower: any,
+  selectedRadio: any,
+  calculatedDistance: any,
+  clients: array,
+  isClientActive: string,
+  activateClientAccess: func,
+  disableClientAccess: func
 };
 
 export default AntennaField;

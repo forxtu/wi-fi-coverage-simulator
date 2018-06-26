@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { node } from 'prop-types';
 
 import AuxWrapper from 'hoc/AuxWrapper';
 import './Layout.css';
@@ -14,7 +14,7 @@ const Layout = props => (
 );
 
 Layout.propTypes = {
-  children: PropTypes.node
+  children: node
 };
 
 export default Layout;

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { node, arrayOf, object, func, any } from 'prop-types';
 
 import '../Sidebar.css';
 import './RadioOptions.css';
@@ -14,7 +14,7 @@ const RadioOptions = props => {
         value={radioOption.numericFreq}
         id={`${radioOption.freq}_radio_id`}
         checked={radioOption.numericFreq == props.selectedRadio}
-        onChange={props.handleRadioChange}
+        onChange={props.onRadioChange}
       />
       <label
         className="RadioOptions__items-label"
@@ -36,10 +36,10 @@ const RadioOptions = props => {
 };
 
 RadioOptions.propTypes = {
-  children: PropTypes.node,
-  radioOptions: PropTypes.arrayOf(PropTypes.object),
-  handleRadioChange: PropTypes.func,
-  selectedRadio: PropTypes.any
+  children: node,
+  radioOptions: arrayOf(object),
+  onRadioChange: func,
+  selectedRadio: any
 };
 
 export default RadioOptions;

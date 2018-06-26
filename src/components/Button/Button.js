@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { node, string, func } from 'prop-types';
 
 import './Button.css';
 import AuxWrapper from 'hoc/AuxWrapper';
@@ -10,9 +10,7 @@ const Button = props => {
       <button
         className={`Button ${props.btnType}`}
         onClick={
-          props.btnType === 'Button__save'
-            ? props.handleSave
-            : props.handleCancel
+          props.btnType === 'Button__save' ? props.onSave : props.onCancel
         }
       >
         {props.children}
@@ -22,10 +20,10 @@ const Button = props => {
 };
 
 Button.propTypes = {
-  children: PropTypes.node,
-  btnType: PropTypes.string,
-  handleSave: PropTypes.func,
-  handleCancel: PropTypes.func
+  children: node,
+  btnType: string,
+  onSave: func,
+  onCancel: func
 };
 
 export default Button;

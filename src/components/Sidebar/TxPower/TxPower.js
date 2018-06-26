@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { arrayOf, object, func, node, any } from 'prop-types';
 import { capitalize } from 'utils/functions';
 
 import '../Sidebar.css';
@@ -15,7 +15,7 @@ const TxPower = props => {
   return (
     <div className="TxPower">
       <h2 className="Sidebar__title">{props.children}</h2>
-      <select onChange={props.handlePowerChange} value={props.selectedPower}>
+      <select onChange={props.onPowerChange} value={props.selectedPower}>
         {powerList}
       </select>
     </div>
@@ -23,10 +23,10 @@ const TxPower = props => {
 };
 
 TxPower.propTypes = {
-  children: PropTypes.node,
-  txPower: PropTypes.arrayOf(PropTypes.object),
-  handlePowerChange: PropTypes.func,
-  selectedPower: PropTypes.any
+  children: node,
+  txPower: arrayOf(object),
+  onPowerChange: func,
+  selectedPower: any
 };
 
 export default TxPower;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { node } from 'prop-types';
 
 import Client from './Client/Client';
 import './Clients.css';
@@ -30,8 +30,7 @@ class Clients extends Component {
 }
 
 Clients.propTypes = {
-  children: PropTypes.node,
-  clients: PropTypes.node
+  clients: node
 };
 
 export default Clients;
