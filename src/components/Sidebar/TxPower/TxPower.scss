@@ -1,3 +1,34 @@
 .TxPower {
   margin-bottom: 20px;
+  &__select {
+    &-wrapper {
+      position: relative;
+      &:before {
+        content: '\F107';
+        font-family: FontAwesome;
+        color: #434B4F;
+        display: inline-block;
+        position: absolute;
+        pointer-events: none;
+        right: 8px;
+        top: 5px;
+      }
+    }
+    &-item {
+      cursor: pointer;
+      background: transparent;
+      width: 100%;
+      color: #fff;
+      border: 1px solid #434B4F;
+      padding: 4px;
+      appearance: none;
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+      option {
+        color: #434B4F;
+      }
+    }
+  }
 }

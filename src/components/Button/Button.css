@@ -1,5 +1,7 @@
 .Button {
   color: #fff;
+  font-family: Lato;
+  font-weight: 700;
   text-transform: uppercase;
   border: none;
   border-radius: 3px;

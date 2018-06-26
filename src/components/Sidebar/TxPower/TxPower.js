@@ -15,9 +15,15 @@ const TxPower = props => {
   return (
     <div className="TxPower">
       <h2 className="Sidebar__title">{props.children}</h2>
-      <select onChange={props.onPowerChange} value={props.selectedPower}>
-        {powerList}
-      </select>
+      <div className="TxPower__select-wrapper">
+        <select
+          className="TxPower__select-item"
+          onChange={props.onPowerChange}
+          value={props.selectedPower}
+        >
+          {powerList}
+        </select>
+      </div>
     </div>
   );
 };

@@ -9,7 +9,8 @@
     height: 80px;
     border-radius: 50%;
     background-color: #fff;
-    z-index: 7; }
+    z-index: 7;
+    transition: .2s; }
     .Antenna__item-point {
       border: 2px solid #00a1da;
       border-radius: 50%;

@@ -1,2 +1,26 @@
 .TxPower {
   margin-bottom: 20px; }
+  .TxPower__select-wrapper {
+    position: relative; }
+    .TxPower__select-wrapper:before {
+      content: '\F107';
+      font-family: FontAwesome;
+      color: #434B4F;
+      display: inline-block;
+      position: absolute;
+      pointer-events: none;
+      right: 8px;
+      top: 5px; }
+  .TxPower__select-item {
+    cursor: pointer;
+    background: transparent;
+    width: 100%;
+    color: #fff;
+    border: 1px solid #434B4F;
+    padding: 4px;
+    appearance: none; }
+    .TxPower__select-item:focus {
+      outline: none;
+      box-shadow: none; }
+    .TxPower__select-item option {
+      color: #434B4F; }
