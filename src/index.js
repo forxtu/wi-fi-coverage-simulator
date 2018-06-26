@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import WebFont from 'webfontloader';
+import 'font-awesome/css/font-awesome.min.css';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
