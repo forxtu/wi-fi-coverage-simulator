@@ -15,6 +15,7 @@ const AntennaField = props => {
         disableClientAccess={props.disableClientAccess}
         isClientActive={props.isClientActive}
       />
+      <div className="AntennaField__distance-indicator">100m</div>
     </div>
   );
 };
