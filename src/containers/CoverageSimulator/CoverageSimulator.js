@@ -5,7 +5,10 @@ import { string, func } from 'prop-types';
 import Sidebar from 'components/Sidebar/Sidebar';
 import AntennaField from 'components/AntennaField/AntennaField';
 import './CoverageSimulator.css';
-import * as actionTypes from 'store/actions';
+import {
+  activateClientStatus,
+  disableClientStatus
+} from '../../store/clients/clientsActions';
 
 class CoverageSimulator extends Component {
   static propTypes = {
@@ -130,9 +133,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onStatusActivate: () =>
-      dispatch({ type: actionTypes.ACTIVATE_CLIENT_STATUS }),
-    onStatusDisable: () => dispatch({ type: actionTypes.DISABLE_CLIENT_STATUS })
+    onStatusActivate: () => dispatch(activateClientStatus()),
+    onStatusDisable: () => dispatch(disableClientStatus())
   };
 };
 

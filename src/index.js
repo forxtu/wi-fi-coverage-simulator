@@ -4,13 +4,12 @@ import registerServiceWorker from './registerServiceWorker';
 import WebFont from 'webfontloader';
 import 'font-awesome/css/font-awesome.min.css';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 
 import './index.css';
 import App from './App';
-import reducer from 'store/reducer';
+import configureStore from './store/configureStore';
 
-const store = createStore(reducer);
+const store = configureStore();
 
 WebFont.load({
   google: {
