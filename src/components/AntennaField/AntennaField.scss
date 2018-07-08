@@ -3,4 +3,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  &__distance-indicator {
+    position: absolute;
+    right: 270px;
+    bottom: 20px;
+    width: 100px;
+    border: 1px solid #9E9E9E;
+    border-top: none;
+    text-align: center;
+    color: #9E9E9E;
+    font-family: Lato;
+    font-weight: 700;
+    font-size: 15px;
+  }
 }
